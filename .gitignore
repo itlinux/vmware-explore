@@ -4,3 +4,6 @@ terraform.tfstate.backup
 terraform.tfstate.lock.info
 .terraform.lock.hcl
 .idea/
+join-command
+*.tfvars
+*.org

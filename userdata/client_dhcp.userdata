@@ -26,6 +26,7 @@ write_files:
       sed -i -e "s/gw_to_be_replaced/\"$gw\"/g" /tmp/50-cloud-init.yaml
       sudo sed -i -e 's/\"//g' /tmp/50-cloud-init.yaml
       echo "cloud init done" | tee /tmp/cloudInitDone.log
+      sudo apt install -y httpie
     path: /opt/bootstrap.sh
     permissions: "0755"
   - content: |
