@@ -7,7 +7,7 @@ This repo spin up a full Avi environment in vCenter with one K8s clusters in ord
 - K8s cluster can be configured with Antrea, Calico or Flannel as a CNI
 - if CNI is antrea, AKO can rely on NodePortLocal or ClusterIP - if CNI is not antrea, AKO will default to ClusterIP
 - For the management network, each VM is using either IP DHCP allocation or static IP address
-- For the management network, SE are using either IP DHCP allocation or Avi IPAM  
+- For the management network, SE are using either IP DHCP allocation or Avi IPAM
 - For the K8s network, master and workers VMs are using static IP addresses and SE(s) rely on Avi IPAM
 - For the vip network, client VM is using static IP address and SE(s) rely on Avi IPAM.
 
@@ -53,7 +53,7 @@ git clone https://github.com/tacobayle/tfVmwAkoK8sDemo
 
 ## Variables:
 
-| Variable names        | Description           | Mandatory  | Example                                                                                    | variable source suggestion| 
+| Variable names        | Description           | Mandatory  | Example                                                                                    | variable source suggestion|
 | --------------------- |---------------------|:----------:|:-------------------------------------------------------------------------------------------|:--------|
 | vsphere_username      | vsphere_username | true | administrator                                                                              | environment variable |
 | vsphere_password      | vsphere_password | true | ******                                                                                     |environment variable |
@@ -101,7 +101,7 @@ git clone https://github.com/tacobayle/tfVmwAkoK8sDemo
   - 2 workers nodes per cluster
 - Configure Avi Controller:
   - Bootstrap Avi Controller (Password, NTP, DNS)
-  - IPAM and DNS profiles  
+  - IPAM and DNS profiles
   - vCenter cloud configuration
   - Service Engine Groups
   - DNS VS (to demonstrate FQDN registration reachable outside k8s cluster)
@@ -112,7 +112,7 @@ git clone https://github.com/tacobayle/tfVmwAkoK8sDemo
 
 ```
 git clone
-# initialize the variables 
+# initialize the variables
 terraform init
 terraform apply -auto-approve
 ```
@@ -153,15 +153,15 @@ $(terraform output -json | jq -r .Destroy_command_avi_config_only.value) ; terra
     k logs -f ako-0 -n avi-system
     ```
   
-- K8s service (type LoadBalancer):  
+- K8s service (type LoadBalancer):
   - Create a K8s service (type LoadBalancer):
     ```
     k apply -f service_loadBalancer.yml
-    ``` 
+    ```
   - Verify your K8s services:
     ```
     k get svc
-    ```  
+    ```
   - Create a K8s deployment:
     ```
     k apply -f deployment.yml
@@ -169,7 +169,7 @@ $(terraform output -json | jq -r .Destroy_command_avi_config_only.value) ; terra
   - Verify your K8s deployment:
     ```
     k get deployment
-    ```    
+    ```
   - this triggers a new VS in the Avi controller:
 ![Alt text](img/l4.png?raw=true "L4 LB")
 
@@ -188,7 +188,7 @@ $(terraform output -json | jq -r .Destroy_command_avi_config_only.value) ; terra
     ```
     
 - Scale your deployment:
-  - scale your deployment using:  
+  - scale your deployment using:
     ```
     k scale deployment web-front1 --replicas=6
     ```
@@ -203,7 +203,7 @@ $(terraform output -json | jq -r .Destroy_command_avi_config_only.value) ; terra
   - Verify your K8s services:
     ```
     k get svc
-    ```  
+    ```
   - Create an ingress:
     ```
     k apply -f ingress.yml
@@ -271,6 +271,6 @@ $(terraform output -json | jq -r .Destroy_command_avi_config_only.value) ; terra
   - Verify your host CRD rule status:
     ```shell
     k get HostRule  avi-crd-hostrule-waf -o json | jq .status.status
-    ```  
+    ```
   - this triggers a WAF policy which will be attached to the child VS in the Avi controller:
     ![Alt text](img/waf-secure-ingress.png?raw=true "Add WAF policy to your secure ingress")
