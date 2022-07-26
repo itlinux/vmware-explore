@@ -10,7 +10,6 @@
     - vmware.alb
 
   tasks:
-
     - name: Create Backup Configuration passphrase
       vmware.alb.avi_backupconfiguration:
         avi_credentials: "{{ avi_credentials | default(omit) }}"

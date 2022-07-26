@@ -3,17 +3,14 @@
 #
 variable "vsphere_username" {}
 variable "vsphere_password" {
-//  sensitive = true
 }
 
 variable "docker_registry_username" {
   //  sensitive = true
 }
 variable "docker_registry_password" {
-  //  sensitive = true
 }
 variable "docker_registry_email" {
-  //  sensitive = true
 }
 
 variable "static_password" {
@@ -150,9 +147,7 @@ variable "ako_service_type" {
   default = "NodePortLocal"
 }
 
-#
 # Other Variables
-#
 
 variable "content_library" {
   default = {

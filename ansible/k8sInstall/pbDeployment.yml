@@ -8,7 +8,6 @@
     - "vars/params.yml"
 
   tasks:
-
     - name: Spin up Deployment
       shell: |
         kubectl apply -f "{{ item.url }}"

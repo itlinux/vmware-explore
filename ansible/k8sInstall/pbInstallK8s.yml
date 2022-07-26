@@ -8,10 +8,6 @@
     - "vars/params.yml"
 
   tasks:
-
-#    - debug:
-#        msg: "{{ kubernetes }}"
-
     - name: Apply new IP config
       become: true
       shell: |
@@ -40,15 +36,6 @@
       tags:
         - apt
       retries: 3
-
-    # - debug:
-    #     msg: "{{ hostvars[inventory_hostname].ansible_distribution }}"
-    # - debug:
-    #     msg: "{{ hostvars[inventory_hostname].ansible_distribution_major_version }}"
-    # - debug:
-    #     msg: "{{ hostvars[inventory_hostname].ansible_distribution_version }}"
-    # - debug:
-    #     msg: "{{ hostvars[inventory_hostname].ansible_distribution_release }}"
 
     - name: Add repo to apt
       become: true

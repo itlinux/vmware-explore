@@ -6,7 +6,6 @@
     - vmware.alb
 
   tasks:
-
     - name: Create vsvip for dns VS - VMW
       vmware.alb.avi_vsvip:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
