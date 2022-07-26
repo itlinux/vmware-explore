@@ -108,7 +108,7 @@ git clone https://github.com/tacobayle/tfVmwAkoK8sDemo
 
 ## Run terraform:
 
-- create:
+- Create your environment:
 
 ```
 git clone
@@ -117,7 +117,7 @@ terraform init
 terraform apply -auto-approve
 ```
 
-- destroy:
+- Destroy your environment:
 
 ```
 $(terraform output -json | jq -r .Destroy_command_avi_config_only.value) ; terraform destroy -auto-approve
