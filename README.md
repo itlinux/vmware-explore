@@ -105,7 +105,7 @@ git clone https://github.com/tacobayle/tfVmwAkoK8sDemo
   - IPAM and DNS profiles
   - vCenter cloud configuration
   - Service Engine Groups
-  - DNS virtual service ( aks VS, to demonstrate FQDN registration reachable outside k8s cluster)
+  - DNS virtual service ( aka VS, to demonstrate FQDN registration reachable outside k8s cluster)
 
 ## Run terraform:
 
