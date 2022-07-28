@@ -132,16 +132,17 @@ resource "null_resource" "k8s_bootstrap_master" {
     user = "ubuntu"
     private_key = tls_private_key.ssh.private_key_pem
   }
-
   provisioner "file" {
     content = data.template_file.k8s_bootstrap_master.rendered
     destination = "k8s_bootstrap_master.sh"
   }
-
+  provisioner "file" {
+    source      = "templates/waftest.txt"
+    destination = "waftest.txt"
+  }
   provisioner "remote-exec" {
     inline = ["sudo /bin/bash k8s_bootstrap_master.sh"]
   }
-
 }
 
 resource "null_resource" "copy_join_command_to_tf" {

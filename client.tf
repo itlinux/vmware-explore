@@ -226,3 +226,18 @@ resource "null_resource" "update_ip_to_client_static" {
     ]
   }
 }
+resource "null_resource" "waftest_client" {
+  depends_on = [null_resource.add_nic_to_client]
+
+  connection {
+    host        = vsphere_virtual_machine.client_dhcp[0].default_ip_address
+    type        = "ssh"
+    agent       = false
+    user        = "ubuntu"
+    private_key = tls_private_key.ssh.private_key_pem
+  }
+  provisioner "file" {
+    source      = "templates/waftest.txt"
+    destination = "waftest.txt"
+  }
+}

